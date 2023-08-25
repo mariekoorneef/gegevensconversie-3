@@ -2,12 +2,13 @@ import {
   Heading,
   Card,
   CardBody,
-  CardFooter,
   CardHeader,
   Button,
   Text,
   Stack,
 } from "@chakra-ui/react";
+import { MdMail, MdLocationPin, MdPhone } from "react-icons/md";
+import { FaLinkedin } from "react-icons/fa";
 
 const cards = [
   {
@@ -48,15 +49,33 @@ export function SimpleCards() {
           <Heading size="md">Contact gegevens</Heading>
         </CardHeader>
         <CardBody>
-          <Text> Ruud Koorneef</Text>
-          <Text>+31 6 20403067</Text>
-          <Text>r.koorneef@gegevensconversie.nl</Text>
-          {/* <Button onClick={() => window.location = 'mailto:r.koorneef@gegevensconversie.nl'}>r.koorneef@gegevensconversie.nl</Button> */}
-          <Button onClick={showInMapClicked}>Dalkruiddreef 14, Nuenen</Button>
+          <Stack direction="column">
+            <Text textAlign="center"> Ruud Koorneef</Text>
+            <Button leftIcon={<MdPhone />}>+31 6 20403067</Button>
+            <Button
+              onClick={() =>
+                (window.location.href =
+                  "mailto:r.koorneef@gegevensconversie.nl")
+              }
+              leftIcon={<MdMail />}
+            >
+              r.koorneef@gegevensconversie.nl
+            </Button>
+            <Button onClick={showInMapClicked} leftIcon={<MdLocationPin />}>
+              Dalkruiddreef 14, Nuenen
+            </Button>
+            <Button
+              onClick={(e) => {
+                e.preventDefault();
+                window.location.href =
+                  "https://nl.linkedin.com/in/datamigration";
+              }}
+              leftIcon={<FaLinkedin />}
+            >
+              LinkedIn
+            </Button>
+          </Stack>
         </CardBody>
-        <CardFooter>
-          <Button>View here</Button>
-        </CardFooter>
       </Card>
     </Stack>
   );
